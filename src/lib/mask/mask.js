@@ -8,6 +8,7 @@
 var Mask = function(values) {
 	this.numMasks = 0;
 	this.masks = {};
+	this.reverseMasks = {};
 	this.values = [];
 
 	if (Object.prototype.toString.call(values) === '[object Array]') {
@@ -20,6 +21,7 @@ var Mask = function(values) {
 Mask.prototype.addValue = function(value) {
 	var newMask = Math.pow(2, this.numMasks);
 	this.masks[newMask] = value;
+	this.reverseMasks[value] = newMask;
 	this.values.push(value);
 	++this.numMasks;
 	return newMask;
@@ -69,6 +71,10 @@ Mask.prototype.getAllValues = function() {
 
 Mask.prototype.getAllMasks = function() {
 	return this.masks;
+};
+
+Mask.prototype.getReverseMasks = function() {
+	return this.reverseMasks;
 };
 
 module.exports = Mask;

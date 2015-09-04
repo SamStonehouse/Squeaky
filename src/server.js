@@ -70,7 +70,7 @@ var addQueryRoute = function(tableName, columnNames) {
 
 		res.set('Content-Type', 'application/json');
 
-		var masksString = JSON.stringify(masks.getAllMasks());
+		var masksString = JSON.stringify(masks.getReverseMasks());
 
 		res.send(masksString);
 	});
